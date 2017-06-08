@@ -48,15 +48,3 @@ class Invite(Activities):
 
     def get_all(self,title):
         return self.invited
-
-
-# inv = Invite()
-
-# inv.add_friend('maziwa','james1','main1',status='pending')
-# inv.add_friend('maziwa','james3','main3',status='pending')
-# inv.add_friend('maziwa','james4','main4',status='pending')
-
-# inv.delete_friends_by_title('maziwa')
-
-
-# print(inv.get_all("maziwa"))
