@@ -26,6 +26,16 @@ class Invite(Activities):
             if v[0] == title:
                 count += 1
         return count
+    
+    def delete_friends_by_title(self,title):
+        key = []
+        for k,v in self.invited.items():
+            if v[0] == title:
+                key.append(k)  
+        for k in key:
+            del self.invited[k]
+        return self.invited      
+        
 
     def confirm_attending(self,title,first_name):
         self.invited[title+"_"+first_name] = [title,first_name,second_name,self.ATTENDING]
@@ -38,3 +48,15 @@ class Invite(Activities):
 
     def get_all(self,title):
         return self.invited
+
+
+# inv = Invite()
+
+# inv.add_friend('maziwa','james1','main1',status='pending')
+# inv.add_friend('maziwa','james3','main3',status='pending')
+# inv.add_friend('maziwa','james4','main4',status='pending')
+
+# inv.delete_friends_by_title('maziwa')
+
+
+# print(inv.get_all("maziwa"))

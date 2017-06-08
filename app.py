@@ -64,7 +64,10 @@ def list_activities():
 @app.route('/activity_delete<title>')
 def delete_activity(title):
     activity.delete_activity(title)
-    data = activity.get_all_activities()      
+    #get all names on this title
+    invited_friends.delete_friends_by_title(title)
+    # invited_friends.
+    data = activity.get_all_activities()    
     return render_template('activities.html',data = data)
 
 
