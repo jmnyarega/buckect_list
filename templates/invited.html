@@ -1,0 +1,94 @@
+{% include 'base.html' %}
+{% block content %}
+     <div class="container">
+                <div class="row">
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-10">
+                        <header class="page-header">Invited Friends</header>
+                    <div class="panel panel-default">
+                            <div class="panel panel-heading">
+                                Invited Friends
+                            </div>
+                            <div class="panel panel-body">
+
+                            <table class="table table-condensed  table-responsive table-bordered" id="demo">  
+                                <thead class="alert alert-success">  
+                                        <th>First Name</th>
+                                        <th>Second Name</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                </thead>
+                                {% for k,v in data.items() %}
+                                    {% if  title == v[0] %}
+                                    <tr> 
+                                        <td>{{ v[1] }}</td>
+                                        <td>{{ v[2] }}</td>
+
+                                        <td>
+                                            
+                                            {% if v[3] == 'attending' %}
+                                            Attending  <i style="color: green;" class="glyphicon glyphicon-ok-circle"></i>
+                                            {% endif %}
+
+                                            {% if v[3] == 'pending' %}
+                                            Pending <i style="color: gold;" class="glyphicon glyphicon-check"></i>
+                                            {% endif %}
+
+                                            {% if v[3] == 'not_attending' %}
+                                            Not Attending <i style="color: red;" class="glyphicon glyphicon-remove-circle"></i>
+                                            {% endif %}
+
+
+                                        </td>
+                                        <td>
+                                        <!--<name>,<title>-->
+                                            <!--<a href="" class="btn btn-default btn-sm">Update</a>-->
+                                            <a href="{{ url_for('delete_friend',name=v[1],title=v[0]) }}" class="btn btn-default btn-sm">Delete</a>
+                                        </td>
+                                        
+                                    </tr>  
+                                    {% endif %}
+                                {% endfor %}                                 
+
+                            </table>
+                            </div>
+                            <div class="panel panel-footer">
+
+
+                            </div>
+                    </div>
+                    <!--</div>-->
+                            <a href="{{ url_for('invite_friend',titles=title) }}" class="btn btn-default"> 
+                                    <span class="glyphicon glyphicon-plus-sign">
+                                            </span> 
+                                Add New Friend
+                            </a>
+                            <a href="{{ url_for('list_activities') }}" class="btn btn-default"> 
+                                    <span class="glyphicon glyphicon-list">
+                                            </span> 
+                                Activity  List
+                            </a>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+
+    
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+    <script type="text/javascript" src="{{ url_for('static',filename ='js/jquery.dataTables.js') }}"></script>    
+    <script type="text/javascript" src="{{ url_for('static',filename ='js/dataTables.bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename ='js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#demo').dataTable({});
+        });
+    </script>
+
+{% endblock %}
+</html>

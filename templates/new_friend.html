@@ -1,0 +1,61 @@
+{% include 'base.html' %}
+{% block content %}
+     <div class="container">
+                <div class="row">
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-10">
+                        <header class="page-header">New Friend</header>
+                        <div class="panel panel-default">
+                            <div class="panel panel-heading">
+                                Add New Friend
+                            </div>
+                            <div class="panel panel-body">
+                           
+                                    <form  action="{{ url_for('invite_friend',titles = title ) }} " method="POST">
+                                        <input type="hidden" value="{{ title }}" name="title">
+                                        <div class="form-group">                            
+                                                        First Name
+                                                    <input type="text" class="form-control" name="first_name" required>
+                                        </div>
+                                        <div class="form-group">  
+                                                Second Name
+                                            <input type="text" class="form-control" name="second_name" required>
+                                        </div>
+                                        <div class="form-group">  
+                                                Status
+                                                <select name="status" id="status" class="form-control" style="width: 30%" required>
+                                                    <option value="pending">Pending</option>
+                                                    <option value="attending">Confirmed</option>
+                                                    <option value="not_attending">Rejected</option>
+                                                </select>
+                                        </div>
+                                        <div class="form-group">                                              
+                                        <input type="submit" name="" class="btn btn-default" value="Add">
+                                        </div>
+                                    </form>                                
+                            </div>
+                            <div class="panel panel-footer">
+
+                            </div>
+
+
+                        </div>
+
+                        
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+
+    
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+</html>
+

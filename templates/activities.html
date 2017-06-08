@@ -1,0 +1,81 @@
+{% include 'base.html' %}
+{% block content %}
+     <div class="container">
+                <div class="row">
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-10">
+                        <header class="page-header">Activities</header>
+                        <div class="panel panel-default">
+                            <div class="panel panel-heading">
+                                Invited Friends
+                            </div>
+                            <div class="panel panel-body">
+
+                            <table class="table table-condensed  table-responsive table-bordered" id="demo">  
+                                <thead class="alert alert-success">  
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                </thead>
+                    
+                                {% for keys,values in data.items() | reverse %}
+                                        {% if values[-1] == session['user'] %}
+                                    <tr> 
+                                        <td>{{ keys }}</td>
+                                        <td>{{ values[0] }}</td>
+                                        <td>{{ values[1] }}</td>
+                                        <td> 
+                                            
+                                            {% if values[2] == 'done' %}
+                                            {{ values[2] }} <i style="color: green;" class="glyphicon glyphicon-ok-circle"></i>
+                                            {% endif %}
+
+                                            {% if values[2] == 'pending' %}
+                                            {{ values[2] }} <i style="color: goldenrod;" class="glyphicon glyphicon-check"></i>
+                                            {% endif %}   
+                                            {% if values[2] == 'canceled' %}
+                                            {{ values[2] }} <i style="color: red;" class="glyphicon glyphicon-remove-circle"></i>
+                                            {% endif %}                                        
+                                        </td>
+                                        <td>
+                                            <a href="{{ url_for('get_invited_friends',title=keys) }}" class="btn btn-default btn-sm">Invited </a>
+                                            <a href="{{ url_for('delete_activity', title=keys) }}" class="btn btn-default btn-sm" onclick="return confirm('Are you sure your want to delete this?')">Delete</a>
+                                            <button class="btn btn-default btn-sm">Update</button>
+                                        </td>
+                                        
+                                    </tr>
+                                    {% endif %}
+                            {% endfor %}
+                                    
+                            </table>
+                            </div>
+                            <div class="panel panel-footer">
+
+                            </div>
+
+                        </div>
+
+                            <a href="{{ url_for('new_activity') }}" class="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> Add New Activity</a>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+
+    
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static',filename ='js/jquery.dataTables.js') }}"></script>    
+    <script type="text/javascript" src="{{ url_for('static',filename ='js/dataTables.bootstrap.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#demo').dataTable({});
+        });
+    </script>
+{% endblock %}
+</html>
