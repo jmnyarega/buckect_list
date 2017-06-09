@@ -1,7 +1,8 @@
-from flask import Flask,render_template,request,session
-from register import User
+from flask import Flask, redirect, render_template, request, session
+
 from activities import Activities
 from invited import Invite
+from register import User
 
 U =  User()
 activity = Activities()
@@ -69,6 +70,18 @@ def delete_activity(title):
     # invited_friends.
     data = activity.get_all_activities()    
     return render_template('activities.html',data = data)
+
+
+@app.route('/activity/mark_done/<title>')
+def mark_done(title):
+    activity.set_done(title)
+    return redirect('activity_list')
+
+
+@app.route('/activity/mark_pending/<title>')
+def mark_set_pending(title):
+    activity.set_pending(title)
+    return redirect('activity_list')
 
 
 @app.route('/invited/<title>')
