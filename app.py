@@ -87,7 +87,10 @@ def mark_set_pending(title):
 @app.route('/invited/<title>')
 def get_invited_friends(title):
     data = invited_friends.get_all(title);
-    return render_template('invited.html',title=title,data=data)
+    status = activity.get_status(title)
+    print(activity.get_status(title))
+    print(status)
+    return render_template('invited.html',title=title,status = status,data=data)
 
 @app.route('/invite_friend/<titles>',methods = ['POST','GET'])
 def invite_friend(titles):
