@@ -91,8 +91,8 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 Apps in the _examples_ directory are an api for a blog:
 
-- _simple_ is a simple app
-- _factory_ uses blueprints
+- _activities_ is a simple app
+
 
 Run with
 
