@@ -17,7 +17,7 @@ To install Buckect-list, run pip:
     python setup.py install
 
 
-## Custom documentation
+<!--## Custom documentation
 
 To access the documentation without rendering html:
 
@@ -56,9 +56,9 @@ _title_ and _author_ will be available in the template:
 	{% if title is defined %}
 		{{title}}
 	{% endif %}
-	...
+	...-->
 
-## Documentation sets
+<!--## Documentation sets
 
 Endpoints can be grouped together in different documentation sets. It is possible for instance to show some endpoints to third party developers and have full documentation for primary developers.
 
@@ -78,7 +78,7 @@ to generate the documentation for a specific group, pass the name of the group t
 
     auto.html('public')
     auto.html(groups=['public','private'])
-    auto.generate('public')
+    auto.generate('public')-->
 
 ## Authors
 
