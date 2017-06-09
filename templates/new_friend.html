@@ -9,7 +9,7 @@
                         <header class="page-header">New Friend</header>
                         <div class="panel panel-default">
                             <div class="panel panel-heading">
-                                Add New Friend
+                                <h5>{{ title }}</h5>
                             </div>
                             <div class="panel panel-body">
                            
@@ -17,11 +17,11 @@
                                         <input type="hidden" value="{{ title }}" name="title">
                                         <div class="form-group">                            
                                                         First Name
-                                                    <input type="text" class="form-control" name="first_name" required>
+                                                    <input type="text" class="form-control" name="first_name" placeholder="Invite: first name" required>
                                         </div>
                                         <div class="form-group">  
                                                 Second Name
-                                            <input type="text" class="form-control" name="second_name" required>
+                                            <input type="text" class="form-control" name="second_name" placeholder="Invite: second name" required>
                                         </div>
                                         <div class="form-group">  
                                                 Status
@@ -31,10 +31,20 @@
                                                     <option value="not_attending">Rejected</option>
                                                 </select>
                                         </div>
-                                        <div class="form-group">                                              
-                                        <input type="submit" name="" class="btn btn-default" value="Add">
-                                        </div>
-                                    </form>                                
+
+                                    <div class="form-group">  
+                                    <div class="pull-right">                                                                
+                                            <button type="submit" class="btn btn-default"> Save <span class="glyphicon glyphicon-ok-sign"></span> </button>                                        
+                                            <a href="{{url_for('get_invited_friends',title= title) }}" class="btn btn-default">Invited List <span class="glyphicon glyphicon-th-list"></span> </a>
+                                    </div>
+                                    <br />
+                                    {% if message  %}
+                                        <span class="alert alert-success"> {{ message }} </span>
+                                    {% endif %}
+                                        
+                                    </div>
+                                    </form>  
+                                                       
                             </div>
                             <div class="panel panel-footer">
 
@@ -53,7 +63,21 @@
 </div>
 
 {% endblock %}
+</div>
+     <hr  style="margin-bottom: 0px;"/>
+     <div class="row">
+        <div class="col-md-2">
 
+        </div>
+        <div class="col-md-8" >
+        &copy bucket list application 2017
+        </div>
+
+
+        <div class="col-md-2">
+
+        </div>
+     </div>
 {% block scripts %}
 
 {% endblock %}

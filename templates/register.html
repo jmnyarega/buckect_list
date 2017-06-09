@@ -49,12 +49,12 @@
   <div class="container">
     <ul class="nav navbar-nav">
       <li class="active">
-        <a href=""><span class="glyphicon glyphicon-home"></span> Bucket List App - Login</a>
+        <a href=""><span class="glyphicon glyphicon-home"></span> Bucket List App - Registration</a>
       </li>
 
   </div>
 </nav>
-<body>
+
      <div class="container">
                 <div class="row">
                     <div class="col-md-2">
@@ -63,25 +63,68 @@
                     <div class="col-md-8">
                             <div class="panel panel-default" >
                                 <div class="panel panel-heading">
-                                    Register
+                                    Registration Area
                                  </div>
                                  <div class="panel panel-body">
                                      <form action="{{ url_for('register') }}" method="POST">
-                                   <label for="">Username
-                                        <input type="text" name="username" class="form-control" required>
-                                   </label> 
-                                   <label for="">Password
+
+                                    <div class="form-group">                          
+                                    <label for="">Username</label>
+                                            <input type="text" name="username" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group"> 
+                                   <label for="">Password </label>
                                     <input type="password" name="password" class="form-control" required>
-                                   </label>
-                                    <input type="submit" name="submit" class="btn btn-default"> 
-                                    <!--<a href="activities.html" class="btn btn-default">Register</a>-->
+                                    </div>
+
+                                    <div class="form-group"> 
+                                   <label for="">Confirm Password </label>
+                                    <input type="password" name="C_password" class="form-control" required>
+                                    </div>
+                                 
+                                    <div class="form-group">
+                                     <input type="submit" name="submit" class="btn btn-default pull-right" value="Sign Up">    
+                                    </div>
+                                    <br />
+                                    <!--<a href="activities.html" class="btn btn-default">Login</a>-->
                                     </form> 
-                                    <p>Already have an accouunt? Login in <strong> <a style="text-decoration: none;" href="{{ url_for('index') }}">Here</a> </strong></p> 
+                                <div>
+                                    <p>Already Registered?<b>Login</b> here <strong> <a style="text-decoration: none;" href="{{ url_for('index') }}">Here</a> </strong></p> 
+                                </div>
+                                <br />
+
+                                    {% if error  %}
+                                    <span class="alert alert-danger">
+                                        {{ error }}
+                                     </span>
+                                    {% endif %}                              
+                                    
+                                    {% if name  %}
+                                    <span class="alert alert-success">
+                                        {{ name }} <strong> <a style="text-decoration: none;" href="{{ url_for('index') }}">Here</a> </strong>
+                                     </span>
+                                    {% endif %}
+                                    
+                            
                                 
-                                <span>
-                                    {{ name }}
-                                 </span>
-                                
+                                 <hr/>
+                                <legend> Alternative Registration  </legend>
+                                    <div class="row">
+                                        <div class="col-md-3 col-xs-3 col-sm-3">                                            
+                                            <button type="button" class="btn btn-default btn-sm"><img width="20" src="{{ url_for('static', filename ='images/1496536559_facebook_online_social_media.png') }}" alt="" /> &nbsp;&nbsp; <b> Facebook </b></button>                                           
+                                        </div>
+                                        <div class="col-md-3 col-xs-3 col-sm-3">
+                                        <button type="button" class="btn btn-default btn-sm"><img width="20" src="{{ url_for('static', filename ='images/1496536563_online_social_media_twitter.png') }}" alt="" /> &nbsp;&nbsp; <b> Twitter </b></button>
+                                        </div>
+                                        <div class="col-md-3 col-xs-3 col-sm-3">
+                                        <button type="button" class="btn btn-default btn-sm"><img width="20" src="{{ url_for('static', filename ='images/1497021918_40-google-plus.png') }}" alt="" /> &nbsp;&nbsp; <b> Google </b></button>
+                                        </div>
+                                        <div class="col-md-3 col-xs-3 col-sm-3">
+                                        <button type="button" class="btn btn-default btn-sm"><img width="20" src="{{ url_for('static', filename ='images/1497022473_social_media_logo_linkedin.png') }}" alt="" /> &nbsp;&nbsp; <b> LinkedIn </b></button>
+                                        </div>
+                                    </div>
+
                                  </div>
 
                                  <div class="panel panel-footer">

@@ -9,7 +9,7 @@
                         <header class="page-header">Invited Friends</header>
                     <div class="panel panel-default">
                             <div class="panel panel-heading">
-                                <h4>{{ title }}</h4>
+                                <h5>{{ title }}</h5>
                                
                             </div>
                             <div class="panel panel-body">
@@ -28,6 +28,7 @@
                                         <td>{{ v[2] }}</td>
 
                                         <td>
+                     
                                             
                                             {% if v[3] == 'attending' %}
                                             Attending  <i style="color: green;" class="glyphicon glyphicon-ok-circle"></i>
@@ -46,7 +47,7 @@
                                         <td>
                                         <!--<name>,<title>-->
                                             <!--<a href="" class="btn btn-default btn-sm">Update</a>-->
-                                            <a href="{{ url_for('delete_friend',name=v[1],title=v[0]) }}" class="btn btn-default btn-sm">Delete</a>
+                                            <a href="{{ url_for('delete_friend',name=v[1],title=v[0]) }}" class="btn btn-default btn-sm">Delete <span class="glyphicon glyphicon-remove-circle"></span> </a>
                                         </td>
                                         
                                     </tr>  
@@ -81,12 +82,26 @@
     
 </div>
 {% endblock %}
+</div>
+     <hr  style="margin-bottom: 0px;"/>
+     <div class="row">
+        <div class="col-md-2">
 
+        </div>
+        <div class="col-md-8" >
+        &copy bucket list application 2017
+        </div>
+
+
+        <div class="col-md-2">
+
+        </div>
+     </div>
 {% block scripts %}
 
     <script type="text/javascript" src="{{ url_for('static',filename ='js/jquery.dataTables.js') }}"></script>    
     <script type="text/javascript" src="{{ url_for('static',filename ='js/dataTables.bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static',filename ='js/bootstrap.min.js') }}"></script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#demo').dataTable({});

@@ -1,5 +1,8 @@
 {% include 'base.html' %}
 {% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-datetimepicker.css') }}">
+
      <div class="container">
                 <div class="row">
                     <div class="col-md-1">
@@ -15,21 +18,43 @@
                                 <form action="{{ url_for('new_activity') }}"  method="POST">
 
                                     <div class="form-group">                            
-                                                    Activity Title
-                                                <input type="text" class="form-control" name="title" required>
+                                                   Activity Venue
+                                    <input type="text" class="form-control" name="title" placeholder="Venue: Activity" required>
                                     </div>
+
                                     <div class="form-group">  
-                                            Activity Description
-                                        <textarea name="description"  cols="30" rows="10" class="form-control" required>
+                                            Activity About
+                                        <textarea name="description"  cols="10" rows="2" placeholder="Activity: About" class="form-control" required>
                                         </textarea>
                                     </div>
-                                    <div class="form-group">  
-                                            Activity Date
-                                        <input type="date" name="date2" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">  
+
+                                 
                                         
-                                    <input type="submit" name="" class="btn btn-default">
+                                            <div class="row">
+                                                <div class='col-sm-6'>
+                                                    <div class="form-group">
+                                                        Activity Date
+                                                        <div class='input-group date' id='datetimepicker1'>
+                                                            <input type='text' class="form-control" name="date2" placeholder="Activity: Date" contenteditable="false"/>
+                                                            <span class="input-group-addon">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>                                   
+
+                                    <div class="form-group">  
+                                    <div class="pull-right">                                                                
+                                            <button type="submit" class="btn btn-default"> Save <span class="glyphicon glyphicon-ok-sign"></span> </button>                                        
+                                            <a href="{{url_for('list_activities') }}" class="btn btn-default">View Activity List <span class="glyphicon glyphicon-th-list"></span> </a>
+                                    </div>
+                                    <br />
+                                    {% if message  %}
+                                        <span class="alert alert-success"> {{ message }} </span>
+                                    {% endif %}
+                                        
                                     </div>
                                 </form>
                             </div>
@@ -45,11 +70,34 @@
     
 </div>
 {% endblock %}
+</div>
+     <hr  style="margin-bottom: 0px;"/>
+     <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8" >
+        &copy bucket list application 2017
+        </div>
+
+
+        <div class="col-md-2">
+
+        </div>
+     </div>
 {% block scripts %}
-<script type="text/javascript">
-$(document).ready(function(){
-$('textarea').val('');
-});
-</script>
+<script type= "text/javascript" src="{{ url_for('static',filename='js/moment.min.js') }}"></script>
+<script type= "text/javascript" src="{{ url_for('static',filename='js/bootstrap-datetimepicker.min.js') }}"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+            $('textarea').val('');
+            });
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
 {% endblock %}
 </html>

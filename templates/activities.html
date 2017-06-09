@@ -15,8 +15,8 @@
 
                             <table class="table table-condensed  table-responsive table-bordered" id="demo" style="font-size: 12px;">  
                                 <thead class="alert alert-success">  
-                                        <th>Title</th>
-                                        <th>Description</th>
+                                        <th>Venue</th>
+                                        <th>About Activity</th>
                                         <th>Date</th>
                                         <th>Status</th>
                                         <th>Change Status</th>
@@ -54,9 +54,9 @@
                                         </td>
 
                                         <td>
-                                            <a href="{{ url_for('get_invited_friends',title=keys) }}" class="btn btn-default btn-sm">Invited </a>
-                                            <a href="{{ url_for('delete_activity', title=keys) }}" class="btn btn-default btn-sm" onclick="return confirm('Are you sure your want to delete this?')">Delete</a>
-                                            <button class="btn btn-default btn-sm">Update</button>
+                                            <a href="{{ url_for('get_invited_friends',title=keys) }}" class="btn btn-default btn-sm">View Invited <span class="glyphicon glyphicon-eye-open"></span> </a>
+                                            <button class="btn btn-default btn-sm">Update <span class="glyphicon glyphicon-refresh"></span></button>
+                                            <a href="{{ url_for('delete_activity', title=keys) }}" class="btn btn-default btn-sm" onclick="return confirm('Are you sure your want to delete this?')">Delete <span class="glyphicon glyphicon-remove-circle"></span> </a>
                                         </td>
                                         
                                     </tr>
@@ -79,8 +79,23 @@
 
     
 </div>
-{% endblock %}
 
+{% endblock %}
+</div>
+     <hr  style="margin-bottom: 0px;"/>
+     <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8" >
+        &copy bucket list application 2017
+        </div>
+
+
+        <div class="col-md-2">
+
+        </div>
+     </div>
 {% block scripts %}
     <script type="text/javascript" src="{{ url_for('static',filename ='js/jquery.dataTables.js') }}"></script>    
     <script type="text/javascript" src="{{ url_for('static',filename ='js/dataTables.bootstrap.js') }}"></script>
