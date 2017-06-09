@@ -72,7 +72,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Josiah Nyarega** - *Initial work* - [PurpleBooth](https://github.com/jmnyarerga)
+* **Josiah Nyarega** - *Initial work* - [jmnyarerga](https://github.com/jmnyarerga)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
