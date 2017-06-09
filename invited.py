@@ -16,6 +16,7 @@ class Invite(Activities):
     def delete_friend(self,title,first_name):
         del self.invited[title+"_"+first_name]
         return self.invited
+        
 
     def get_activity_status(self,title):
         return super(Invite,self).__init__(title)
