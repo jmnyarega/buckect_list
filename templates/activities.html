@@ -9,16 +9,17 @@
                         <header class="page-header">Activities</header>
                         <div class="panel panel-default">
                             <div class="panel panel-heading">
-                                Invited Friends
+                                Activities
                             </div>
                             <div class="panel panel-body">
 
-                            <table class="table table-condensed  table-responsive table-bordered" id="demo">  
+                            <table class="table table-condensed  table-responsive table-bordered" id="demo" style="font-size: 12px;">  
                                 <thead class="alert alert-success">  
                                         <th>Title</th>
                                         <th>Description</th>
                                         <th>Date</th>
                                         <th>Status</th>
+                                        <th>Mark Done</th>
                                         <th></th>
                                 </thead>
                     
@@ -41,6 +42,17 @@
                                             {{ values[2] }} <i style="color: red;" class="glyphicon glyphicon-remove-circle"></i>
                                             {% endif %}                                        
                                         </td>
+
+                                        <td>
+                                            {% if values[2] != 'done' %}
+                                          <a href="{{ url_for('mark_done', title=keys) }}" class="btn btn-default btn btn-sm"> Done</a>
+                                            {% endif %}
+
+                                            {% if values[2] == 'done'   %}
+                                          <a href="{{ url_for('mark_set_pending', title=keys) }}" class="btn btn-default btn btn-sm"> Pending</a>    
+                                            {% endif %}
+                                        </td>
+
                                         <td>
                                             <a href="{{ url_for('get_invited_friends',title=keys) }}" class="btn btn-default btn-sm">Invited </a>
                                             <a href="{{ url_for('delete_activity', title=keys) }}" class="btn btn-default btn-sm" onclick="return confirm('Are you sure your want to delete this?')">Delete</a>
