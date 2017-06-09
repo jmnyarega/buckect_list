@@ -1,33 +1,20 @@
 
 
-
-
-
 Buckect-list
 =============
 
-Buckect-list is a Flask extension that automatically creates documentation for your endpoints based on the routes, function arguments and docstrings.
+A bucket list application that helps us record  activities we wish to undertake, tick off what we have done and even invite our  friends to have fun with us
 
 [![Flask ](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg)](http://flask.pocoo.org/docs/0.12/)
 ![Python 2](http://img.shields.io/badge/python-2-blue.svg)
 ![Python 3](http://img.shields.io/badge/python-3-blue.svg)
 
 
-# Buckect List
-
-A bucket list application that helps us record  activities we wish to undertake, tick off what we have done and even invite our  friends to have fun with us
-
-
 ## Install
 
 To install Buckect-list, run pip:
 
-	pip install Buckect-list
-	
-or clone this directory and run setup:
-
     python setup.py install
-
 
 
 ## Custom documentation
