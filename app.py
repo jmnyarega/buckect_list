@@ -19,7 +19,7 @@ def index():
             This function render a login page and authenticates the user when the form is submitted
     '''
     if request.method == 'GET':
-        return render_template("index.html",name="name")
+        return render_template("index.html")
     elif request.method == 'POST':
         print(U.get_all_users())
         if U.get_all_users().get(request.form['username']):
@@ -28,8 +28,8 @@ def index():
                 data = activity.get_all_activities()      
                 return render_template('activities.html',data = data)
             else:
-                return  render_template("index.html",name="invalid login")
-        return  render_template("index.html",name="invalid login")
+                return  render_template("index.html",name="Password or username is wrong, try again.")
+        return  render_template("index.html",name="Password or username is wrong, try again.")
 
 
 @app.route('/registration',methods=['GET','POST'])
@@ -39,27 +39,38 @@ def register():
 
     '''
     if request.method == 'GET':
-        return render_template("register.html",name="")
+        return render_template("register.html")
     elif    request.method == 'POST':
         U.save(request.form['username'],request.form['password']) 
-        return render_template('register.html',name="")
+        if request.form['password'] != request.form['C_password']:
+            return render_template('register.html',error="Your passwords do not match, try again. ")
+        else:
+            return render_template('register.html',name="You have been succesfully registered, you can now login ")
 
 
 
 @app.route('/new_activity',methods=['GET','POST'])
 def new_activity():
-    if request.method == 'GET':
-        return render_template('new_activity.html')
-    elif request.method == 'POST':
-        activity.add_activity(request.form['title'],request.form['description'],request.form['date2'],'pending',session['user'])        
-        data = activity.get_all_activities()      
-        return render_template('activities.html',data = data)
+    try:
+        if request.method == 'GET':
+            return render_template('new_activity.html')
+        elif request.method == 'POST':
+            activity.add_activity(request.form['title'],request.form['description'],request.form['date2'],'pending',session['user'])        
+            message = 'Added Successfully.'    
+            return render_template('new_activity.html',message = message)
+    except Exception as e:
+        return redirect('/')
+
         
 
 @app.route('/activity_list')
 def list_activities():
+
+    try:
         data = activity.get_all_activities()      
         return render_template('activities.html',data = data)
+    except Exception as e:
+        return redirect('/')
 
 
 @app.route('/activity_delete<title>')
@@ -105,8 +116,8 @@ def invite_friend(titles):
         return render_template('new_friend.html',title=titles)
     elif request.method == 'POST':
         invited_friends.add_friend(request.form['title'],request.form['first_name'],request.form['second_name'],request.form['status'])
-        data = invited_friends.get_all(titles);
-        return render_template('invited.html',title=titles,data=data)  
+        message = "Added Sucessfully."
+        return render_template('new_friend.html',title=titles,message=message)  
 
 
 @app.route('/delete_friend/<name>,<title>')
