@@ -8,9 +8,7 @@ Buckect-list
 
 Buckect-list is a Flask extension that automatically creates documentation for your endpoints based on the routes, function arguments and docstrings.
 
-[![Build](https://api.travis-ci.org/acoomans/flask-autodoc.png)](https://travis-ci.org/acoomans/flask-autodoc)
-[![Pypi version](http://img.shields.io/pypi/v/flask-autodoc.svg)](https://pypi.python.org/pypi/Flask-Autodoc)
-[![Pypi license](http://img.shields.io/pypi/l/flask-autodoc.svg)](https://pypi.python.org/pypi/Flask-Autodoc)
+[![Flask ](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg)](http://flask.pocoo.org/docs/0.12/)
 ![Python 2](http://img.shields.io/badge/python-2-blue.svg)
 ![Python 3](http://img.shields.io/badge/python-3-blue.svg)
 
@@ -111,9 +109,9 @@ Apps in the _examples_ directory are an api for a blog:
 
 Run with
 
-	python simple/blog.py
+	python activities/app.py
 	
-and connect to [/doc/public](http://127.0.0.1:5000/doc/public) and [/doc/private](http://127.0.0.1:5000/doc/private) to see public and private documentations.
+and connect to [/access app](http://127.0.0.1:5000/) to see public and private documentations.
 
 
 ## Built With
@@ -128,6 +126,11 @@ and connect to [/doc/public](http://127.0.0.1:5000/doc/public) and [/doc/private
 
 ![screenshots](screenshots/screenshot01.png)
 
+![screenshots](screenshots/screenshot02.png)
+
+![screenshots](screenshots/screenshot03.png)
+
+![screenshots](screenshots/screenshot04.png)
 
 ## Acknowledgments
 
