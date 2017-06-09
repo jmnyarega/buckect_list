@@ -33,3 +33,6 @@ class  Activities(object):
 
     def get_status(self,title):
         return self.activities[title][2]
+
+    def get_activity_details(self,title):
+        return self.activities[title]
