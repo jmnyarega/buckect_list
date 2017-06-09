@@ -74,14 +74,21 @@ def delete_activity(title):
 
 @app.route('/activity/mark_done/<title>')
 def mark_done(title):
-    activity.set_done(title)
-    return redirect('activity_list')
+    try:
+        activity.set_done(title)
+        return redirect('activity_list')
+    except Exception as e:
+        return redirect('activity_list')
 
 
 @app.route('/activity/mark_pending/<title>')
 def mark_set_pending(title):
-    activity.set_pending(title)
-    return redirect('activity_list')
+    try:
+        activity.set_pending(title)
+        return redirect('activity_list')
+    except Exception as e:
+        return redirect('activity_list')
+
 
 
 @app.route('/invited/<title>')
