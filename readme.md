@@ -51,12 +51,6 @@ Additional arguments (other than _group_, _groups_, and _template_) will be pass
 
 _title_ and _author_ will be available in the template:
 
-	<!-- templates/custom_documentation.html -->
-	<!--...
-	{% if title is defined %}
-		{{title}}
-	{% endif %}
-	...-->-->
 
 <!--## Documentation sets
 
@@ -98,7 +92,7 @@ and connect to [/access app](http://127.0.0.1:5000/) to see public and private d
 ## Built With
 
 * [Flask](http://flask.pocoo.org/docs/0.12/) - The web framework used
-* [SqlAlchemy](http://docs.sqlalchemy.org/en/latest/) - Dependency Management
+<!--* [SqlAlchemy](http://docs.sqlalchemy.org/en/latest/) - Dependency Management-->
 
 
 ## Screenshots
@@ -117,8 +111,7 @@ and connect to [/access app](http://127.0.0.1:5000/) to see public and private d
 
 * **Josiah M. Nyarega** - *Initial work* - [jmnyarerga](https://github.com/jmnyarerga)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
+See also the list of [contributors](https://github.com/jmnyarerga/buckect_list/contributors) who participated in this project.
 
 
 ## Acknowledgments
