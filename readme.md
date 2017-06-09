@@ -1,74 +1,99 @@
+
+
+
+
+
+Buckect-list
+=============
+
+Buckect-list is a Flask extension that automatically creates documentation for your endpoints based on the routes, function arguments and docstrings.
+
+[![Build](https://api.travis-ci.org/acoomans/flask-autodoc.png)](https://travis-ci.org/acoomans/flask-autodoc)
+[![Pypi version](http://img.shields.io/pypi/v/flask-autodoc.svg)](https://pypi.python.org/pypi/Flask-Autodoc)
+[![Pypi license](http://img.shields.io/pypi/l/flask-autodoc.svg)](https://pypi.python.org/pypi/Flask-Autodoc)
+![Python 2](http://img.shields.io/badge/python-2-blue.svg)
+![Python 3](http://img.shields.io/badge/python-3-blue.svg)
+
+
 # Buckect List
 
 A bucket list application that helps us record  activities we wish to undertake, tick off what we have done and even invite our  friends to have fun with us
 
-## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Install
 
-### Prerequisites
+To install Buckect-list, run pip:
 
-What things you need to install the software and how to install them
+	pip install Buckect-list
+	
+or clone this directory and run setup:
 
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Flask](http://flask.pocoo.org/docs/0.12/) - The web framework used
-* [SqlAlchemy](http://docs.sqlalchemy.org/en/latest/) - Dependency Management
+    python setup.py install
 
 
-## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+## Custom documentation
 
-## Versioning
+To access the documentation without rendering html:
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+    @app.route('/documentation')
+    def documentation():
+        return auto.generate()
+
+the documentation will be returned as a list of rules, where each rule is a dictionary containing:
+
+- methods: the set of allowed methods (ie ['GET', 'POST'])
+- rule: relative url (ie '/user/<int:id>')
+- endpoint: function name (ie 'show_user')
+- doc: docstring of the function
+- args: function arguments
+- defaults: defaults values for the arguments
+
+## Custom template
+
+To use a custom template for your documentation, give a _template_ argument to the _html_ method. This will use a template from the flask _templates_ directory. 
+
+Additional arguments (other than _group_, _groups_, and _template_) will be passed down to the template:
+
+	auto.html(
+		
+		template='custom_documentation.html'
+		
+		title='My Documentation',
+		author='John Doe',
+	)
+	
+
+_title_ and _author_ will be available in the template:
+
+	<!-- templates/custom_documentation.html -->
+	...
+	{% if title is defined %}
+		{{title}}
+	{% endif %}
+	...
+
+## Documentation sets
+
+Endpoints can be grouped together in different documentation sets. It is possible for instance to show some endpoints to third party developers and have full documentation for primary developers.
+
+To assign an endpoint to a group, pass the name of the group as argument of the _doc_ decorator:
+
+    @app.route('/user/<int:id>')
+    @auto.doc('public')
+    def show_user(id):
+
+to assign an endpoint to multiple groups, pass a list of group names as the _groups_ argument to _doc_:
+
+    @app.route('/user/<int:id>')
+    @auto.doc(groups=['public','private'])
+    def show_user(id):
+
+to generate the documentation for a specific group, pass the name of the group to the _html_ or _generate_ methods:
+
+    auto.html('public')
+    auto.html(groups=['public','private'])
+    auto.generate('public')
 
 ## Authors
 
@@ -76,10 +101,35 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
 
-This project is not licensed yet but u can  - see [LICENSE.md](LICENSE.md) file for details
+## Examples
+
+Apps in the _examples_ directory are an api for a blog:
+
+- _simple_ is a simple app
+- _factory_ uses blueprints
+
+Run with
+
+	python simple/blog.py
+	
+and connect to [/doc/public](http://127.0.0.1:5000/doc/public) and [/doc/private](http://127.0.0.1:5000/doc/private) to see public and private documentations.
+
+
+## Built With
+
+* [Flask](http://flask.pocoo.org/docs/0.12/) - The web framework used
+* [SqlAlchemy](http://docs.sqlalchemy.org/en/latest/) - Dependency Management
+
+
+## Screenshots
+
+![screenshots](screenshots/screenshot00.png)
+
+![screenshots](screenshots/screenshot01.png)
+
 
 ## Acknowledgments
 
 * Inspiration from Andela
+
