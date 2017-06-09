@@ -10,6 +10,7 @@
                     <div class="panel panel-default">
                             <div class="panel panel-heading">
                                 <h4>{{ title }}</h4>
+                               
                             </div>
                             <div class="panel panel-body">
 
@@ -60,11 +61,14 @@
                             </div>
                     </div>
                     <!--</div>-->
+                    {% if status != 'done'  %}
                             <a href="{{ url_for('invite_friend',titles=title) }}" class="btn btn-default"> 
                                     <span class="glyphicon glyphicon-plus-sign">
                                             </span> 
                                 Add New Friend
-                            </a>
+                            </a>                    
+                    {% endif %}
+
                             <a href="{{ url_for('list_activities') }}" class="btn btn-default"> 
                                     <span class="glyphicon glyphicon-list">
                                             </span> 

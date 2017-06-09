@@ -19,7 +19,7 @@
                                         <th>Description</th>
                                         <th>Date</th>
                                         <th>Status</th>
-                                        <th>Mark Done</th>
+                                        <th>Change Status</th>
                                         <th></th>
                                 </thead>
                     
@@ -36,7 +36,7 @@
                                             {% endif %}
 
                                             {% if values[2] == 'pending' %}
-                                            {{ values[2] }} <i style="color: goldenrod;" class="glyphicon glyphicon-check"></i>
+                                            {{ values[2] }} <i style="color: goldenrod;" class="glyphicon glyphicon-asterisk"></i>
                                             {% endif %}   
                                             {% if values[2] == 'canceled' %}
                                             {{ values[2] }} <i style="color: red;" class="glyphicon glyphicon-remove-circle"></i>
@@ -45,11 +45,11 @@
 
                                         <td>
                                             {% if values[2] != 'done' %}
-                                          <a href="{{ url_for('mark_done', title=keys) }}" class="btn btn-default btn btn-sm"> Done</a>
+                                          <a href="{{ url_for('mark_done', title=keys) }}" class="btn btn-default btn btn-sm"> Done <i style="color: green" class="glyphicon glyphicon-ok-circle"></i></a>
                                             {% endif %}
 
                                             {% if values[2] == 'done'   %}
-                                          <a href="{{ url_for('mark_set_pending', title=keys) }}" class="btn btn-default btn btn-sm"> Pending</a>    
+                                          <a href="{{ url_for('mark_set_pending', title=keys) }}" class="btn btn-default btn btn-sm"> Pending <i style="color: gold" class="glyphicon glyphicon-asterisk"></i> </a>    
                                             {% endif %}
                                         </td>
 
