@@ -52,11 +52,11 @@ Additional arguments (other than _group_, _groups_, and _template_) will be pass
 _title_ and _author_ will be available in the template:
 
 	<!-- templates/custom_documentation.html -->
-	...
+	<!--...
 	{% if title is defined %}
 		{{title}}
 	{% endif %}
-	...-->
+	...-->-->
 
 <!--## Documentation sets
 
@@ -79,12 +79,6 @@ to generate the documentation for a specific group, pass the name of the group t
     auto.html('public')
     auto.html(groups=['public','private'])
     auto.generate('public')-->
-
-## Authors
-
-* **Josiah M. Nyarega** - *Initial work* - [jmnyarerga](https://github.com/jmnyarerga)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 
 ## Examples
@@ -118,6 +112,14 @@ and connect to [/access app](http://127.0.0.1:5000/) to see public and private d
 ![screenshots](screenshots/screenshot03.png)
 
 ![screenshots](screenshots/screenshot04.png)
+
+## Authors
+
+* **Josiah M. Nyarega** - *Initial work* - [jmnyarerga](https://github.com/jmnyarerga)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+
 
 ## Acknowledgments
 
