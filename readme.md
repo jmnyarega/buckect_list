@@ -99,6 +99,8 @@ and connect to [/access app](http://127.0.0.1:5000/) to see public and private d
 
 ![screenshots](screenshots/screenshot00.png)
 
+![screenshots](screenshots/screenshot05.png)
+
 ![screenshots](screenshots/screenshot01.png)
 
 ![screenshots](screenshots/screenshot02.png)
