@@ -72,7 +72,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Josiah Nyarega** - *Initial work* - [jmnyarerga](https://github.com/jmnyarerga)
+* **Josiah M. Nyarega** - *Initial work* - [jmnyarerga](https://github.com/jmnyarerga)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -82,6 +82,4 @@ This project is not licensed yet but u can  - see [LICENSE.md](LICENSE.md) file 
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Inspiration from Andela
