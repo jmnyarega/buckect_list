@@ -1,5 +1,4 @@
 from flask import Flask, redirect, render_template, request, session
-
 from activities import Activities
 from invited import Invite
 from register import User
@@ -9,9 +8,8 @@ activity = Activities()
 invited_friends = Invite()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "123456abcde"
-
-
+# app.config.from_object(os.environ['APP_SETTINGS'])
+app.config['SECRET_KEY'] = 'any random string' #must be set to use sessions
 
 @app.route('/',methods = ['GET','POST'])
 def index():
@@ -19,9 +17,9 @@ def index():
             This function render a login page and authenticates the user when the form is submitted
     '''
     if request.method == 'GET':
-        return render_template("index.html")
+        data = "please login."
+        return render_template("index.html",data= data)
     elif request.method == 'POST':
-        print(U.get_all_users())
         if U.get_all_users().get(request.form['username']):
             if U.get_all_users().get(request.form['username']) == request.form['password']:
                 session['user'] = request.form['username']
@@ -65,12 +63,19 @@ def new_activity():
 
 @app.route('/activity_list')
 def list_activities():
-
     try:
-        data = activity.get_all_activities()      
-        return render_template('activities.html',data = data)
-    except Exception as e:
-        return redirect('/')
+        if session['user']:
+            data = activity.get_all_activities()      
+            return render_template('activities.html',data = data)
+        else:
+            return redirect('/login')
+    except:
+        return redirect('/login')
+
+@app.route('/login')
+def login():
+    return render_template('index.html')
+    
 
 
 @app.route('/activity_delete<title>')
@@ -106,8 +111,8 @@ def mark_set_pending(title):
 def get_invited_friends(title):
     data = invited_friends.get_all(title);
     status = activity.get_status(title)
-    print(activity.get_status(title))
-    print(status)
+    # print(activity.get_status(title))
+    # print(status)
     return render_template('invited.html',title=title,status = status,data=data)
 
 @app.route('/invite_friend/<titles>',methods = ['POST','GET'])
@@ -128,8 +133,12 @@ def delete_friend(name,title):
 
 @app.route('/logout')
 def logout():
-    session.pop('user', None)
-    return render_template('index.html')  
+    try:
+        U.del_user(session['user'])
+        session.pop('user', None)
+        return render_template('index.html')
+    except:
+        return render_template('index.html')  
 
 @app.route('/status/<title>')
 def activity_status(title):
