@@ -1,0 +1,1 @@
+web: gunicorn bucket-list-andela:app
