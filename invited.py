@@ -10,7 +10,6 @@ class Invite(Activities):
 
     def add_friend(self,title,first_name,second_name,status='pending'):
         self.invited[title+"_"+first_name] = [title,first_name,second_name,status]
-        print(self.invited)
         return self.invited
 
     def delete_friend(self,title,first_name):
@@ -38,13 +37,13 @@ class Invite(Activities):
         return self.invited      
         
 
-    def confirm_attending(self,title,first_name):
+    def confirm_attending(self,title,first_name,second_name):
         self.invited[title+"_"+first_name] = [title,first_name,second_name,self.ATTENDING]
         return self.invited 
 
 
-    def confirm_not_attending(self,title,first_name):
-        self.invited[title+"_"+name] = [title,name,self.NOT_ATTENDING]
+    def confirm_not_attending(self,title,first_name,second_name):
+        self.invited[title+"_"+first_name] = [title,first_name,second_name,self.NOT_ATTENDING]
         return self.invited 
 
     def get_all(self,title):
