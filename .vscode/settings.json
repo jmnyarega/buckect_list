@@ -4,8 +4,17 @@
         "-s",
         ".",
         "-p",
-        "*test.py"
+        "test*.py"
     ]
 ,
-"python.unitTest.unittestEnabled": true
+"python.unitTest.unittestEnabled": true,
+"python.linting.pylintEnabled": false,
+"python.linting.prospectorEnabled": false,
+"python.linting.pep8Enabled": false,
+"python.linting.flake8Enabled": false,
+"python.formatting.formatOnSave": true,
+"python.unitTest.nosetestsEnabled": false,
+"python.unitTest.pyTestEnabled": false,
+"path-intellisense.extensionOnImport": true,
+"path-intellisense.showHiddenFiles": true
 }
